@@ -114,7 +114,6 @@ class Ui_MainMayor(object):
         self.tableWidget.setRowCount(len(self.schedule))
         getitems = (0,1,2,3)
         for i,t in enumerate(self.schedule):
-            print(t)
             item = QtWidgets.QTableWidgetItem()
             item.setText(str(i+1))
             self.tableWidget.setVerticalHeaderItem(i, item)

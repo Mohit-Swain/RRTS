@@ -13,6 +13,7 @@ from views.residents.selectResidents import Ui_ResidentsWindow
 from views.clerk.clerk import Ui_ClerkWindow
 from views.adminstration.adminstratior import Ui_MainAdminstrator
 from views.supervisor.supervisor import Ui_MainSupervisor
+from views.mayor.mayor import Ui_MainMayor
 from views.dialog import CustomDialog
 
 
@@ -116,6 +117,10 @@ class Ui_AppWindow(object):
             self.launchWindow.show()
         elif self.AdministratorBtn.isChecked():
             ui = Ui_MainAdminstrator()
+            ui.setupUi(self.launchWindow)
+            self.launchWindow.show()
+        elif self.mayorBtn.isChecked():
+            ui = Ui_MainMayor()
             ui.setupUi(self.launchWindow)
             self.launchWindow.show()
         else:
