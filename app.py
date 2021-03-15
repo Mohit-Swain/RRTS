@@ -90,7 +90,7 @@ class Ui_AppWindow(object):
 
     def retranslateUi(self, AppWindow):
         _translate = QtCore.QCoreApplication.translate
-        AppWindow.setWindowTitle(_translate("AppWindow", "MainWindow"))
+        AppWindow.setWindowTitle(_translate("AppWindow", "Main App window"))
         self.label.setText(_translate("AppWindow", "Pick an occupation"))
         self.residentBtn.setText(_translate("AppWindow", "Resident"))
         self.clerkBtn.setText(_translate("AppWindow", "Clerk"))

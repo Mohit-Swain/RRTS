@@ -167,7 +167,7 @@ class Ui_ResidentsWindow(QtWidgets.QMainWindow):
 
     def retranslateUi(self, ResidentsWindow):
         _translate = QtCore.QCoreApplication.translate
-        ResidentsWindow.setWindowTitle(_translate("ResidentsWindow", "MainWindow"))
+        ResidentsWindow.setWindowTitle(_translate("ResidentsWindow", "select resident"))
         self.residentLabel.setText(_translate("ResidentsWindow", "Residents"))
         __sortingEnabled = self.residentsList.isSortingEnabled()
         self.residentsList.setSortingEnabled(False)

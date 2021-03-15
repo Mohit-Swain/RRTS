@@ -64,7 +64,7 @@ class Ui_residentInfo(object):
 
     def retranslateUi(self, residentInfo):
         _translate = QtCore.QCoreApplication.translate
-        residentInfo.setWindowTitle(_translate("residentInfo", "Dialog"))
+        residentInfo.setWindowTitle(_translate("residentInfo", "resident info"))
         self.label_5.setText(_translate("residentInfo", "phone No:"))
         self.label_.setText(_translate("residentInfo","Govt Id : "))
         # self.name.setText(_translate("residentInfo", "a"))

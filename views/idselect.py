@@ -50,7 +50,7 @@ class Ui_Idselect(object):
 
     def retranslateUi(self, Idselect):
         _translate = QtCore.QCoreApplication.translate
-        Idselect.setWindowTitle(_translate("Idselect", "Dialog"))
+        Idselect.setWindowTitle(_translate("Idselect", "select id"))
         self.label.setText(_translate("Idselect", "Select index:"))
 
 

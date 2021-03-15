@@ -86,7 +86,7 @@ class Ui_MainMayor(object):
 
     def retranslateUi(self, MainMayor):
         _translate = QtCore.QCoreApplication.translate
-        MainMayor.setWindowTitle(_translate("MainMayor", "MainWindow"))
+        MainMayor.setWindowTitle(_translate("MainMayor", "mayor main"))
         self.label.setText(_translate("MainMayor", "Mayor"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainMayor", "ComplaintId"))

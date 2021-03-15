@@ -141,7 +141,7 @@ class Ui_ClerkWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "clerk main"))
         self.clerkLabel.setText(_translate("MainWindow", "Clerk"))
         self.label.setText(_translate("MainWindow", "Location of road :"))
         self.label_2.setText(_translate("MainWindow", "Starting point :"))

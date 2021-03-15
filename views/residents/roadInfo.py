@@ -81,7 +81,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "fill road info"))
         self.label.setText(_translate("Dialog", "Loc of Road"))
         self.label_2.setText(_translate("Dialog", "Starting point"))
         self.label_3.setText(_translate("Dialog", "Ending Point"))

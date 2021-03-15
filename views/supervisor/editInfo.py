@@ -133,7 +133,7 @@ class Ui_EditInfo(object):
 
     def retranslateUi(self, EditInfo):
         _translate = QtCore.QCoreApplication.translate
-        EditInfo.setWindowTitle(_translate("EditInfo", "Dialog"))
+        EditInfo.setWindowTitle(_translate("EditInfo", "edit repair info"))
         self.label.setText(_translate("EditInfo", "Edit Road Repair Info"))
         self.label_3.setText(_translate("EditInfo", "Complaint Id:"))
         self.idInput.setText(_translate("EditInfo", self.idVal))

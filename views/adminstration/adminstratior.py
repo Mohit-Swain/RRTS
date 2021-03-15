@@ -105,7 +105,7 @@ class Ui_MainAdminstrator(object):
 
     def retranslateUi(self, MainSupervisor):
         _translate = QtCore.QCoreApplication.translate
-        MainSupervisor.setWindowTitle(_translate("MainSupervisor", "MainWindow"))
+        MainSupervisor.setWindowTitle(_translate("MainSupervisor", "adminstrator main"))
         self.label.setText(_translate("MainSupervisor", "Adminstrator"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainSupervisor", "CompId"))

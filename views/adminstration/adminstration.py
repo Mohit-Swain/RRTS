@@ -128,7 +128,7 @@ class Ui_AdminstrationWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "update resources"))
         self.label.setText(_translate("MainWindow", "Adminstration"))
         self.label_2.setText(_translate("MainWindow", "Update Resources :"))
         self.label_3.setText(_translate("MainWindow", " Available rawMaterial:"))

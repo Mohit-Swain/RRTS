@@ -44,7 +44,7 @@ class Ui_showStatus(object):
 
     def retranslateUi(self, showStatus):
         _translate = QtCore.QCoreApplication.translate
-        showStatus.setWindowTitle(_translate("showStatus", "Dialog"))
+        showStatus.setWindowTitle(_translate("showStatus", "view stats"))
         self.label.setText(_translate("showStatus", "ComplaintId : " + str(self.id)))
         self.textBrowser.setText(_translate("showStatus",self.stats))
 

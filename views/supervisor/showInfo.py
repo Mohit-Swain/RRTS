@@ -135,7 +135,7 @@ class Ui_ShowInfo(object):
 
     def retranslateUi(self, ShowInfo):
         _translate = QtCore.QCoreApplication.translate
-        ShowInfo.setWindowTitle(_translate("ShowInfo", "Dialog"))
+        ShowInfo.setWindowTitle(_translate("ShowInfo", "show repair info"))
         self.label.setText(_translate("ShowInfo", "Road Repair Info"))
         self.label_3.setText(_translate("ShowInfo", "Complaint Id:"))
         self.idInput.setText(_translate("ShowInfo", self.idVal))
