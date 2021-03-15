@@ -23,7 +23,7 @@ class Ui_EditInfo(object):
         self.priorityVal = 5
         self.rawMaterialVal = None
         self.machinesVal = None
-        self.personelVal = None
+        self.statisticsVal = None
         if len(args) == 1 and  len(args[0]) == 10:
             args = args[0]
             self.idVal = str(args[0])
@@ -36,7 +36,7 @@ class Ui_EditInfo(object):
             self.priorityVal = args[6] or 5
             self.rawMaterialVal = args[7]
             self.machinesVal = args[8]
-            self.personelVal = args[9]
+            self.statisticsVal = args[9]
 
     def setupUi(self, EditInfo):
         EditInfo.setObjectName("EditInfo")
@@ -111,9 +111,9 @@ class Ui_EditInfo(object):
         self.rawMaterialInput = QtWidgets.QTextEdit(EditInfo)
         self.rawMaterialInput.setGeometry(QtCore.QRect(120, 250, 371, 91))
         self.rawMaterialInput.setObjectName("rawMaterialInput")
-        self.personelInput = QtWidgets.QTextEdit(EditInfo)
-        self.personelInput.setGeometry(QtCore.QRect(120, 460, 371, 91))
-        self.personelInput.setObjectName("personelInput")
+        self.statisticsInput = QtWidgets.QTextEdit(EditInfo)
+        self.statisticsInput.setGeometry(QtCore.QRect(120, 460, 371, 91))
+        self.statisticsInput.setObjectName("statisticsInput")
         self.machinesInput = QtWidgets.QTextEdit(EditInfo)
         self.machinesInput.setGeometry(QtCore.QRect(120, 360, 371, 91))
         self.machinesInput.setObjectName("machinesInput")
@@ -149,8 +149,8 @@ class Ui_EditInfo(object):
         self.rawMaterialInput.setText(_translate("ShowInfo",self.rawMaterialVal))
         self.label_8.setText(_translate("EditInfo", "Machines:"))
         self.machinesInput.setText(_translate("ShowInfo",self.machinesVal))
-        self.label_9.setText(_translate("EditInfo", "Personel:"))
-        self.personelInput.setText(_translate("ShowInfo",self.personelVal))
+        self.label_9.setText(_translate("EditInfo", "Statistics:"))
+        self.statisticsInput.setText(_translate("ShowInfo",self.statisticsVal))
 
     def makeEdits(self,win):
         mapping = {
@@ -158,7 +158,7 @@ class Ui_EditInfo(object):
             'priority' : self.spinBox.value(),
             "rawMaterial" : self.rawMaterialInput.toPlainText(),
             "machines" : self.machinesInput.toPlainText(),
-            "personel" : self.personelInput.toPlainText()
+            "statistics" : self.statisticsInput.toPlainText()
         }
 
         try:

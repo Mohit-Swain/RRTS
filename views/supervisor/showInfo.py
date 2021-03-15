@@ -21,7 +21,7 @@ class Ui_ShowInfo(object):
         self.priorityVal = None
         self.rawMaterialVal = None
         self.machinesVal = None
-        self.personelVal = None
+        self.statisticsVal = None
         if len(args) == 1 and  len(args[0]) == 10:
             args = args[0]
             self.idVal = str(args[0])
@@ -32,7 +32,7 @@ class Ui_ShowInfo(object):
             self.priorityVal = str(args[6])
             self.rawMaterialVal = args[7]
             self.machinesVal = args[8]
-            self.personelVal = args[9]
+            self.statisticsVal = args[9]
 
 
     def setupUi(self, ShowInfo):
@@ -121,9 +121,9 @@ class Ui_ShowInfo(object):
         self.label_8 = QtWidgets.QLabel(ShowInfo)
         self.label_8.setGeometry(QtCore.QRect(20, 390, 91, 31))
         self.label_8.setObjectName("label_8")
-        self.personelInput = QtWidgets.QTextBrowser(ShowInfo)
-        self.personelInput.setGeometry(QtCore.QRect(120, 500, 381, 91))
-        self.personelInput.setObjectName("personelInput")
+        self.statisticsInput = QtWidgets.QTextBrowser(ShowInfo)
+        self.statisticsInput.setGeometry(QtCore.QRect(120, 500, 381, 91))
+        self.statisticsInput.setObjectName("statisticsInput")
         self.label_9 = QtWidgets.QLabel(ShowInfo)
         self.label_9.setGeometry(QtCore.QRect(20, 490, 91, 31))
         self.label_9.setObjectName("label_9")
@@ -152,8 +152,8 @@ class Ui_ShowInfo(object):
         self.rawMaterialInput.setText(_translate("ShowInfo",self.rawMaterialVal))
         self.label_8.setText(_translate("ShowInfo", "Machines:"))
         self.machinesInput.setText(_translate("ShowInfo",self.machinesVal))
-        self.label_9.setText(_translate("ShowInfo", "Personel:"))
-        self.personelInput.setText(_translate("ShowInfo",self.personelVal))
+        self.label_9.setText(_translate("ShowInfo", "Statistics:"))
+        self.statisticsInput.setText(_translate("ShowInfo",self.statisticsVal))
 
     def showResidents(self):
         residentInfo = QtWidgets.QDialog()

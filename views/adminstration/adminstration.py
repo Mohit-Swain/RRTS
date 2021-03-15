@@ -162,10 +162,14 @@ class Ui_AdminstrationWindow(object):
                 infoTable.updateMaterialInfo(mapping)
             else:
                 infoTable.makeMaterialInfo(mapping)
-            win.close()
+            msg = CustomDialog.init_message('Success', 'Database Updated')
+            if msg.exec_():
+                win.close()
 
         except Exception as e:
             print(e)
+            msg = CustomDialog.init_message('Warning', str(e), 'warning')
+            msg.exec_()
 
 
 

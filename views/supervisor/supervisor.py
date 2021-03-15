@@ -167,7 +167,6 @@ class Ui_MainSupervisor(object):
             ui.setupUi(editInfo)
             editInfo.show()
             editInfo.exec_()
-            self.updateTable()
             self.retranslateUi(win)
 
 if __name__ == "__main__":

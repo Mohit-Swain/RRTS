@@ -64,7 +64,7 @@ class __ComplaintInfoSchema:
                 "priority"	INTEGER,
                 "rawMaterial"	TEXT,
                 "machines"	TEXT,
-                "personel"	TEXT,
+                "statistics"	TEXT,
                 PRIMARY KEY("complaintId"),
                 FOREIGN KEY("complaintId") REFERENCES "Complaints"("complaintId")
             )
@@ -74,8 +74,8 @@ class __ComplaintInfoSchema:
     def makeComplaintInfo(self,mapping):
         conn.execute('''
         INSERT INTO ComplaintInfo 
-        ("complaintId", "priority", "rawMaterial", "machines", "personel") 
-        VALUES (:complainId, :priority, :rawMaterial, :machines, :personel);
+        ("complaintId", "priority", "rawMaterial", "machines", "statistics") 
+        VALUES (:complainId, :priority, :rawMaterial, :machines, :statistics);
         ''',mapping)
         conn.commit()
 
@@ -85,42 +85,38 @@ class __ComplaintInfoSchema:
             SET priority = :priority,
                 rawMaterial = :rawMaterial,
                 machines = :machines,
-                personel = :personel
+                statistics = :statistics
             WHERE complaintId = :complainId;
         ''',mapping)
         conn.commit()
 
-class __ResourcesSchema:
-    def __init__(self):
+    def getComplaintInfo(self,id):
+        curs = conn.execute('''SELECT * FROM ComplaintInfo WHERE complaintId = ? ;''',(id,))
+        curs.fetchone()
+
+    def makeMaterialInfo(self,mapping):
         conn.execute('''
-            CREATE TABLE IF NOT EXISTS "Resources" (
-                "manpower"	INTEGER DEFAULT '',
-                "machines"	TEXT DEFAULT ''
-            )
-        ''')
-        curs = conn.execute('SELECT * FROM Resources;')
-        if curs.fetchone() is None:
-            conn.execute('INSERT INTO "Resources" ("manpower", "machines") VALUES (?, ?);', ('', ''))
+            INSERT INTO ComplaintInfo 
+            ("complaintId", "rawMaterial", "machines") 
+            VALUES (:complainId, :rawMaterial, :machines);
+        ''',mapping)
         conn.commit()
 
-    def addResources(self,manpower,machines):
-        conn.execute('DELETE FROM Resources')
-        conn.execute('INSERT INTO "Resources" ("manpower", "machines") VALUES (?, ?);',(manpower,machines))
+    def updateMaterialInfo(self,mapping):
+        conn.execute('''
+            UPDATE ComplaintInfo
+            SET rawMaterial = :rawMaterial,
+                machines = :machines
+            WHERE complaintId = :complainId;
+        ''',mapping)
         conn.commit()
-
-    def getResources(self):
-        curs = conn.execute('SELECT * FROM Resources;')
-        val = curs.fetchone()
-        if val is not None:
-            return val
-        return '', ''
 
 class __ScheduleSchema:
     def getSchedule(self):
         curs = conn.execute('''
             SELECT * FROM Complaints as c
             LEFT JOIN ComplaintInfo as ci ON c.complaintId = ci.complaintId
-            ORDER BY rawMaterial IS NOT NULL , machines IS NOT NULL, personel IS NOT NULL, priority;
+            ORDER BY rawMaterial IS NOT NULL , machines IS NOT NULL, priority;
         ''')
         return curs.fetchall()
 
@@ -129,5 +125,4 @@ class __ScheduleSchema:
 residentTable = __ResidentsSchema()
 complainTable = __ComplainSchema()
 infoTable = __ComplaintInfoSchema()
-resourcesTable = __ResourcesSchema()
 scheduleTable = __ScheduleSchema()

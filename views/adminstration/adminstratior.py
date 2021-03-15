@@ -13,6 +13,7 @@ from DB import scheduleTable
 from views.supervisor.showInfo import Ui_ShowInfo
 from views.idselect import Ui_Idselect
 from views.adminstration.adminstration import Ui_AdminstrationWindow
+from views.dialog import CustomDialog
 
 
 
@@ -37,7 +38,6 @@ class Ui_MainAdminstrator(object):
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(5)
-        self.tableWidget.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -174,7 +174,8 @@ class Ui_MainAdminstrator(object):
                 editInfo.show()
                 self.retranslateUi(win)
             except Exception as e:
-                print(e)
+                msg = CustomDialog.init_message('Error', str(e), 'critical')
+                msg.exec_()
 
 
 if __name__ == "__main__":

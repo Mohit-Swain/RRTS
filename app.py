@@ -11,7 +11,8 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from views.residents.selectResidents import Ui_ResidentsWindow
 from views.clerk.clerk import Ui_ClerkWindow
-from views.adminstration.adminstration import Ui_AdminstrationWindow
+from views.adminstration.adminstratior import Ui_MainAdminstrator
+from views.supervisor.supervisor import Ui_MainSupervisor
 from views.dialog import CustomDialog
 
 
@@ -109,8 +110,12 @@ class Ui_AppWindow(object):
             ui = Ui_ClerkWindow()
             ui.setupUi(self.launchWindow)
             self.launchWindow.show()
+        elif self.supervisorBtn.isChecked():
+            ui = Ui_MainSupervisor()
+            ui.setupUi(self.launchWindow)
+            self.launchWindow.show()
         elif self.AdministratorBtn.isChecked():
-            ui = Ui_AdminstrationWindow()
+            ui = Ui_MainAdminstrator()
             ui.setupUi(self.launchWindow)
             self.launchWindow.show()
         else:
