@@ -10,9 +10,35 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from views.dialog import CustomDialog
-import DB
+from DB import infoTable
 
 class Ui_AdminstrationWindow(object):
+    def __init__(self,*args):
+        print(args)
+        self.idVal = None
+        self.locVal = None
+        self.startVal = None
+        self.endVal = None
+        self.residentId = None
+        self.priorityVal = None
+        self.isInfoPresent = False
+        self.rawMaterialVal = None
+        self.machinesVal = None
+        self.statisticsVal = None
+        if len(args) == 1 and  len(args[0]) == 10:
+            args = args[0]
+            self.idVal = args[0]
+            self.locVal = args[1]
+            self.startVal = args[2]
+            self.endVal = args[3]
+            self.residentId = args[4]
+            if args[5] is not None:
+                self.isInfoPresent = True
+            self.priorityVal = str(args[6])
+            self.rawMaterialVal = args[7]
+            self.machinesVal = args[8]
+            self.statisticsVal = args[9]
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(600, 600)
@@ -46,12 +72,12 @@ class Ui_AdminstrationWindow(object):
         font.setPointSize(10)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-        self.manpowerInput = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.manpowerInput.setGeometry(QtCore.QRect(200, 120, 341, 161))
+        self.rawMaterialInput = QtWidgets.QPlainTextEdit(self.centralwidget)
+        self.rawMaterialInput.setGeometry(QtCore.QRect(200, 120, 341, 161))
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.manpowerInput.setFont(font)
-        self.manpowerInput.setObjectName("manpowerInput")
+        self.rawMaterialInput.setFont(font)
+        self.rawMaterialInput.setObjectName("rawMaterialInput")
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
         self.line_2.setGeometry(QtCore.QRect(10, 90, 221, 20))
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
@@ -76,13 +102,8 @@ class Ui_AdminstrationWindow(object):
         self.updateBtn.setFont(font)
         self.updateBtn.setMouseTracking(True)
         self.updateBtn.setObjectName("updateBtn")
-        self.updateBtn.clicked.connect(self.addResources)
-        self.showScheduleBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.showScheduleBtn.setGeometry(QtCore.QRect(30, 490, 121, 41))
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.showScheduleBtn.setFont(font)
-        self.showScheduleBtn.setObjectName("showScheduleBtn")
+        self.updateBtn.clicked.connect(lambda :self.addResources(MainWindow))
+
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -110,28 +131,41 @@ class Ui_AdminstrationWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "Adminstration"))
         self.label_2.setText(_translate("MainWindow", "Update Resources :"))
-        self.label_3.setText(_translate("MainWindow", " Available Manpower:"))
+        self.label_3.setText(_translate("MainWindow", " Available rawMaterial:"))
 
         self.label_4.setText(_translate("MainWindow", "Available Machines:"))
         self.updateBtn.setText(_translate("MainWindow", "Update"))
-        self.showScheduleBtn.setText(_translate("MainWindow", "View Schedule"))
         self.menuMenu.setTitle(_translate("MainWindow", "Menu"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
         self.actiondevelopers.setText(_translate("MainWindow", "developers"))
         
         # SET VALUES FROM DB
-        manpower, machines = DB.resourcesTable.getResources()
-        self.manpowerInput.setPlainText(_translate("MainWindow", manpower))
-        self.machineInput.setPlainText(_translate("MainWindow", machines))
 
-    def addResources(self):
-        manpower = self.manpowerInput.toPlainText()
+        self.rawMaterialInput.setPlainText(_translate("MainWindow", self.rawMaterialVal))
+        self.machineInput.setPlainText(_translate("MainWindow", self.machinesVal))
+
+        if self.isInfoPresent:
+            val = infoTable.getComplaintInfo(str(self.idVal))
+            print(val)
+
+    def addResources(self,win):
+        rawMaterial = self.rawMaterialInput.toPlainText()
         machine = self.machineInput.toPlainText()
+        mapping = {
+            'complainId' : self.idVal,
+            'rawMaterial' : rawMaterial,
+            'machines' : machine
+        }
+        print(mapping)
         try:
-            DB.resourcesTable.addResources(manpower,machine)
-            CustomDialog.init_message('success','Resources updated successfully').exec_()
+            if self.isInfoPresent:
+                infoTable.updateMaterialInfo(mapping)
+            else:
+                infoTable.makeMaterialInfo(mapping)
+            win.close()
+
         except Exception as e:
-            CustomDialog.init_message('DB Error', str(e)).exec_()
+            print(e)
 
 
 
